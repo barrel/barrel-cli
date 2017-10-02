@@ -30,6 +30,7 @@
     "css-loader": "^0.28.7",
     "deepmerge": "^1.5.1",
     "delete": "^1.1.0",
+    "eslint-loader": "^1.9.0",
     "event-emitter": "^0.3.5",
     "express": "^4.15.4",
     "extract-text-webpack-plugin": "^3.0.0",
