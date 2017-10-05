@@ -8,7 +8,6 @@ const colors = require('colors')
 
 const pkg = require('./package.json')
 const bus = require('./lib/emitter')
-const Err = require('./lib/error')
 
 program
   .version(pkg.version)
@@ -24,6 +23,7 @@ if (program.debug) {
 
 process.env.ENV = program.env || 'development'
 
+const Err = require('./lib/error')
 const configure = require('./lib/configure')
 const watcher   = require('./lib/watcher')
 const builder   = require('./lib/builder')
@@ -36,7 +36,7 @@ const gulp = require('./lib/gulp')
 process.stdout.write('\x1B[2J\x1B[0f')
 
 try {
-  configure.setup().then(() => {
+  configure.setup(program.watch).then(() => {
     program.watch ? watcher() : builder()
   })
 } catch (e) {
