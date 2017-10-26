@@ -7,7 +7,6 @@ const program = require('commander')
 const colors = require('colors')
 
 const pkg = require('./package.json')
-const bus = require('./lib/emitter')
 
 program
   .version(pkg.version)
@@ -29,7 +28,6 @@ const configure  = require('./lib/configure')
 const watcher    = require('./lib/watcher')
 const builder    = require('./lib/builder')
 const deployer   = require('./lib/deployer')
-const gulp = require('./lib/gulp')
 
 /**
  * Clear terminal bc it's prettier
