@@ -1,0 +1,1 @@
+npm i -S postcss-import postcss-inline-svg postcss-color-function autoprefixer postcss-extend precss babel-plugin-transform-object-rest-spread babel-plugin-transform-object-assign
