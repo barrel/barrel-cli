@@ -34,7 +34,7 @@ This CLI tool requires the following components:
 ```javascript
 module.exports = {
   devtool: '',
-  entry: { ... },
+  entry: { main: ['main.css','main.js'] },
   output: { ... },
   module: { rules: [ ... ] }
 }
