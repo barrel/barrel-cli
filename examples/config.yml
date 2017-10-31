@@ -1,0 +1,15 @@
+production:
+  theme_id:
+  api_key:
+  password:
+  store:
+staging:
+  theme_id:
+  api_key:
+  password:
+  store:
+development:
+  theme_id:
+  api_key:
+  password:
+  store:
