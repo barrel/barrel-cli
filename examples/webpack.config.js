@@ -8,7 +8,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist/assets'),
     filename: 'main.js',
-    chunkFilename: "[name]-[id].js"
+    chunkFilename: `[name]-[id].js?version=${Date.now()}`
   },
   module: {
     rules: [
