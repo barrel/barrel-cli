@@ -23,6 +23,10 @@ if (program.debug) {
 
 process.env.ENV = program.env || 'development'
 
+if (process.env.ENV !== 'development') {
+  process.env.NODE_ENV = 'production'
+}
+
 const Err = require('./lib/error')
 const configure  = require('./lib/configure')
 const watcher    = require('./lib/watcher')
