@@ -9,7 +9,7 @@ This CLI provides development, build and deployment tasks for Shopify projects. 
 
 ### Install
 ```bash
-npm i barrel-cli -D
+npm i @barrelny/cli -D
 ```
 > If you're using any plugins or transforms in your ```postcss.config``` or ```.babelrc```, please install these too. The CLI installs the following packages for you:
 - transform-object-rest-spread (babelrc)
