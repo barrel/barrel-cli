@@ -53,7 +53,9 @@ src
    |-- customers
 ```
 
-4. A ```package.json``` file. Here is an example of how to write your scripts for a Shopify project:
+4. A ```package.json``` file. 
+
+Here is an example of how to write your scripts for a *Shopify* project:
 ```javascript
 {
   "scripts": {
@@ -66,6 +68,16 @@ src
   ...
 }
 ```
+
+Here is an example of how to write your scripts for a *Wordpress* project:
+```javascript
+{
+  "scripts": {
+    "start": "brrl -w",
+    "build": "brrl -b"
+  },
+  ...
+}
 
 4. ```.babelrc```, ```.eslintrc``` and ```postcoss.config.js``` files
 
