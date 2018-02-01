@@ -67,9 +67,11 @@ Here is an example of how to write your scripts for a *Shopify* project:
   },
   ...
 }
+
 ```
 
 Here is an example of how to write your scripts for a *Wordpress* project:
+
 ```javascript
 {
   "scripts": {
@@ -78,8 +80,9 @@ Here is an example of how to write your scripts for a *Wordpress* project:
   },
   ...
 }
+```
 
-4. ```.babelrc```, ```.eslintrc``` and ```postcoss.config.js``` files
+4. .babelrc, .eslintrc and postcoss.config.js files
 
 5. The following line in the entry JS file (e.g. main.js file):
 
