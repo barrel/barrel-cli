@@ -1,10 +1,9 @@
-const path = require('path')
-
-module.exports = {
+const config = {
+  parser: 'postcss-scss',
   plugins: [
-    require('postcss-import')({ addModulesDirectories: ['node_modules' ], } ),
-    require('postcss-inline-svg'),
-    require("postcss-color-function"),
+    require('./tasks/postcss-module-import'),
+    require('postcss-sassy-mixins'),
+
     require('autoprefixer')({
       browsers: [
         'last 3 versions',
@@ -13,7 +12,9 @@ module.exports = {
         'ie 11',
       ]
     }),
-    require('postcss-extend'),
     require('precss'),
+    require('postcss-automath')
   ]
 }
+
+module.exports = config

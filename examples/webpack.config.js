@@ -3,12 +3,11 @@ const path = require('path')
 module.exports = {
   devtool: 'cheap-module-source-map',
   entry: {
-    main: ['./src/assets/css/main.css','./src/assets/js/main'],
+    main: ['./src/scss/main.scss', './src/js/main.js']
   },
   output: {
-    path: path.join(__dirname, 'dist/assets'),
-    filename: 'main.js',
-    chunkFilename: `[name]-[id].js?version=${Date.now()}`
+    path: path.join(__dirname, 'assets'),
+    filename: '[name].js'
   },
   module: {
     rules: [
@@ -37,10 +36,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'lib': path.resolve(__dirname, 'src/assets/js/lib'),
-      'pages': path.resolve(__dirname, 'src/assets/js/pages'),
-      'modules': path.resolve(__dirname, 'src/assets/js/modules'),
-      'root': path.resolve(__dirname, 'src/assets/js')
+      'modules-root': path.resolve(__dirname, 'modules')
     },
   },
   plugins: [],
