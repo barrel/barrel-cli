@@ -1,0 +1,5 @@
+wp_enqueue_script( $handle, "$script_path/main.js", null, $version, ( IS_DEV ? false : true ) );
+
+if ( !IS_DEV ) {
+  wp_enqueue_style( $handle, "$script_path/main.css", array(), $version, 'all' );
+}

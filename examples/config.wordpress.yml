@@ -1,0 +1,4 @@
+production:
+  target: http://site.lndo.site:8000
+development:
+  target: http://site.lndo.site:8000
