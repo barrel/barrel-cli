@@ -82,15 +82,23 @@ Here is an example of how to write your scripts for a *Wordpress* project:
 }
 ```
 
-4. .babelrc, .eslintrc and postcoss.config.js files
+5. .babelrc, .eslintrc and postcss.config.js files
 
-5. The following line in the entry JS file (e.g. main.js file):
+EsLint should only use standard js rules except when incompatible with the project framework:
+```javascript
+// .eslintrc
+module.exports = {
+  "extends": ["standard"]
+}
+```
+
+6. The following line in the entry JS file (e.g. main.js file):
 
 ```javascript
 __webpack_public_path__ = BRRL_PATH(BRRL_PUBLIC_PATH) // eslint-disable-line camelcase
 ```
 
-6. A conditional in the main layout file to pull in the development assets if the watch task is active and the project is currently getting proxied by ```localhost```. For example, in a Shopify project, you can setup a pattern as follows:
+7. A conditional in the main layout file to pull in the development assets if the watch task is active and the project is currently getting proxied by ```localhost```. For example, in a Shopify project, you can setup a pattern as follows:
 ```liquid
 In the head:
 {% if settings.is_dev_mode %}
