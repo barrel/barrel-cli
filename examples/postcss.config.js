@@ -13,6 +13,7 @@ const config = {
       ]
     }),
     require('precss'),
+    require('postcss-hexrgba'),
     require('postcss-automath')
   ]
 }
