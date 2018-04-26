@@ -132,4 +132,6 @@ This command simply compiles your JS and CSS assets and, if it is a Shopify proj
 
 This command will build your project and deploy *Only the necessary files* to your Shopify theme. The deployment is based on a ```git diff``` workflow. The CLI tracks the git commit hashes associated with your deployments so that it can figure out which files have changed since the last deployment and only upload these changed files. It does this by creating and storing a ```commit.txt``` file in the theme's ```assets``` folder. This file tracks the commit hashes associated with each deployment. Note: All changed files need to be committed into the git repo before they can be uploaded to Shopify. If no ```commit.txt``` file can be found, the task will deploy all theme files.
 
+If you want to circumvent the git diff that selectively deploys files, you can add the ```--all``` flag to the deploy command to force deploy all theme files.
+
 MIT
