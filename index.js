@@ -15,6 +15,7 @@ program
   .option('-b, --build [env]', 'deploy a theme')
   .option('-d, --deploy [env]', 'deploy a theme')
   .option('--debug', 'enable available debugging')
+  .option('--all', 'force deployment of all files')
   .parse(process.argv)
 
 if (program.debug) {
@@ -38,7 +39,10 @@ const deployer   = require('./lib/deployer')
  */
 process.stdout.write('\x1B[2J\x1B[0f')
 
-configure.setup(program.watch).then(() => {
+configure.setup({
+  watching: !!program.watch,
+  deployAll: !!program.all
+}).then(() => {
   switch (true) {
     case program.watch: 
       watcher()
