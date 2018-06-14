@@ -1,5 +1,8 @@
 # Barrel cli changelog
 
+### v1.0.23 (4/26/18)
+- Adds externals support
+
 ### v1.0.22 (4/26/18)
 - Updates README with --all description
 
