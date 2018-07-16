@@ -1,5 +1,8 @@
 # Barrel cli changelog
 
+### v1.0.24 (7/16/18)
+- Add routine to conform to theme naming conventions
+
 ### v1.0.23 (4/26/18)
 - Adds externals support
 
