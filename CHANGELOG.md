@@ -1,5 +1,8 @@
 # Barrel cli changelog
 
+### v1.0.28 (7/20/18)
+- Moves compiling assets log
+
 ### v1.0.27 (7/20/18)
 - Supports edgecase when no version tag has been found
 
