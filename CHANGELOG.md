@@ -1,5 +1,8 @@
 # Barrel cli changelog
 
+### v1.0.29 (7/20/18)
+- Updates README
+
 ### v1.0.28 (7/20/18)
 - Moves compiling assets log
 
