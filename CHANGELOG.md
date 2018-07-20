@@ -1,5 +1,8 @@
 # Barrel cli changelog
 
+### v1.0.26 (7/20/18)
+- Supports deploying when no files to deploy
+
 ### v1.0.25 (7/20/18)
 - Refactors deployment workflow
 
