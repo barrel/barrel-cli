@@ -1,5 +1,8 @@
 # Barrel cli changelog
 
+### v1.0.25 (7/20/18)
+- Refactors deployment workflow
+
 ### v1.0.24 (7/16/18)
 - Add routine to conform to theme naming conventions
 

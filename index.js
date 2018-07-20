@@ -18,6 +18,9 @@ program
   .option('--all', 'force deployment of all files')
   .parse(process.argv)
 
+// --all is not used but it's kept so old commands
+// don't break.
+
 if (program.debug) {
   process.env.DEBUG = '*'
 }
@@ -40,8 +43,7 @@ const deployer   = require('./lib/deployer')
 process.stdout.write('\x1B[2J\x1B[0f')
 
 configure.setup({
-  watching: !!program.watch,
-  deployAll: !!program.all
+  watching: !!program.watch
 }).then(() => {
   switch (true) {
     case program.watch: 
