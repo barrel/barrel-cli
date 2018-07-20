@@ -95,7 +95,7 @@ module.exports = {
 6. The following line in the entry JS file (e.g. main.js file):
 
 ```javascript
-__webpack_public_path__ = BRRL_PATH(BRRL_PUBLIC_PATH) // eslint-disable-line camelcase
+__webpack_public_path__ = BRRL_PATH(BRRL_PUBLIC_PATH, BRRL_PROXY) // eslint-disable-line camelcase
 ```
 
 7. A conditional in the main layout file to pull in the development assets if the watch task is active and the project is currently getting proxied by ```localhost```. For example, in a Shopify project, you can setup a pattern as follows:
@@ -130,8 +130,8 @@ This command simply compiles your JS and CSS assets and, if it is a Shopify proj
 ##### ```brrl -d or -deploy```
 > This file is only suitable for Shopify projects. This task will not do anything if the project is not a Shopify project. 
 
-This command will build your project and deploy *Only the necessary files* to your Shopify theme. The deployment is based on a ```git diff``` workflow. The CLI tracks the git commit hashes associated with your deployments so that it can figure out which files have changed since the last deployment and only upload these changed files. It does this by creating and storing a ```commit.txt``` file in the theme's ```assets``` folder. This file tracks the commit hashes associated with each deployment. Note: All changed files need to be committed into the git repo before they can be uploaded to Shopify. If no ```commit.txt``` file can be found, the task will deploy all theme files.
+This command will build your project and deploy *Only the necessary files* to your Shopify theme. The deployment is based on a ```git diff``` workflow. 
 
-If you want to circumvent the git diff that selectively deploys files, you can add the ```--all``` flag to the deploy command to force deploy all theme files.
+The person deploying can select at what point in the git repository they want to check for files that have changed. They can specify a tag, branch or commit hash, or “all” to deploy all files. This is done in the terminal window, in response to a prompt that is surfaced by the tool. If no answer is provided to the prompt, then the deployment script will check for files from the latest version tag (e.g. v1.0.1). If no version tag is found in the repo then it’ll check for files changed since the current branch was branched off of develop (or if the current branch is develop, branched off of master).
 
 MIT
