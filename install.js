@@ -1,3 +1,6 @@
+#! /usr/bin/env node
+'use strict'
+
 const deps = require('./lib/deps.json')
 const {exec} = require('child_process')
 
