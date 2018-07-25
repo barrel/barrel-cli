@@ -14,6 +14,7 @@ program
   .option('-e --env [env]', 'specify an environment')
   .option('-b, --build [env]', 'deploy a theme')
   .option('-d, --deploy [env]', 'deploy a theme')
+  .option('-i, --install', 'install dependencies')
   .option('--debug', 'enable available debugging')
   .option('--all', 'force deployment of all files')
   .parse(process.argv)
@@ -27,7 +28,9 @@ if (program.debug) {
 
 process.env.ENV = program.env || 'development'
 
-if (process.env.ENV !== 'development') {
+if (process.env.ENV === 'development') {
+  process.env.NODE_ENV = 'development'
+} else {
   process.env.NODE_ENV = 'production'
 }
 
@@ -36,6 +39,7 @@ const configure  = require('./lib/configure')
 const watcher    = require('./lib/watcher')
 const builder    = require('./lib/builder')
 const deployer   = require('./lib/deployer')
+const installer   = require('./lib/installer')
 
 /**
  * Clear terminal bc it's prettier
@@ -51,6 +55,9 @@ configure.setup({
       break
     case program.build:
       builder()
+      break
+    case program.install:
+      installer()
       break
     case program.deploy:
       if (configure.get('shopify')) {
