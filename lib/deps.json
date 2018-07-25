@@ -10,6 +10,7 @@
     "eslint-loader": "^2.0.0",
     "file-loader": "^1.1.11",
     "globby": "^5.0.0",
+    "gulp": "^3.9.1",
     "postcss-automath": "^1.0.1",
     "postcss-color-function": "^4.0.0",
     "postcss-extend": "^1.0.5",
@@ -21,5 +22,6 @@
     "precss": "^2.0.0",
     "standard": "^10.0.2",
     "style-loader": "^0.18.2",
-    "url-loader": "^1.0.1"
+    "url-loader": "^1.0.1",
+    "webpack": "^4.16.2"
 }
