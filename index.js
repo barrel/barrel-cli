@@ -1,8 +1,6 @@
 #! /usr/bin/env node
 'use strict'
 
-const path = require('path')
-const fs = require('fs')
 const program = require('commander')
 const colors = require('colors')
 
@@ -26,6 +24,11 @@ if (program.debug) {
   process.env.DEBUG = '*'
 }
 
+if (program.install) {
+  require('./lib/installer')()
+  process.exit()
+}
+
 process.env.ENV = program.env || 'development'
 
 if (process.env.ENV === 'development') {
@@ -39,7 +42,6 @@ const configure  = require('./lib/configure')
 const watcher    = require('./lib/watcher')
 const builder    = require('./lib/builder')
 const deployer   = require('./lib/deployer')
-const installer   = require('./lib/installer')
 
 /**
  * Clear terminal bc it's prettier
@@ -55,9 +57,6 @@ configure.setup({
       break
     case program.build:
       builder()
-      break
-    case program.install:
-      installer()
       break
     case program.deploy:
       if (configure.get('shopify')) {
