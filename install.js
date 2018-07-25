@@ -1,10 +1,7 @@
-const Err = require('./error')
-const deps = require('./deps.json')
+const deps = require('./lib/deps.json')
 const {exec} = require('child_process')
 
 class Installer {
-  constructor () {}
-
   run () {
     const dependencies = Object.keys(deps)
     .map(key => `${key}@${deps[key]}`)
@@ -12,10 +9,10 @@ class Installer {
 
     this.install(dependencies)
     .then(msg => {
-        console.log(msg)
+      console.log(msg)
     })
     .catch(msg => {
-        console.log(msg)
+      console.log(msg)
     })
   }
   
@@ -37,11 +34,5 @@ class Installer {
   }
 }
 
-module.exports = () => {
-  try {
-    const installer = new Installer()
-    return installer.run()
-  } catch (e) {
-    new Err(e)
-  }
-}
+const installer = new Installer()
+installer.run()

@@ -12,7 +12,6 @@ program
   .option('-e --env [env]', 'specify an environment')
   .option('-b, --build [env]', 'deploy a theme')
   .option('-d, --deploy [env]', 'deploy a theme')
-  .option('-i, --install', 'install dependencies')
   .option('--debug', 'enable available debugging')
   .option('--all', 'force deployment of all files')
   .parse(process.argv)
@@ -22,11 +21,6 @@ program
 
 if (program.debug) {
   process.env.DEBUG = '*'
-}
-
-if (program.install) {
-  require('./lib/installer')()
-  process.exit()
 }
 
 process.env.ENV = program.env || 'development'

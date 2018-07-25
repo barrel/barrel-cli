@@ -4,7 +4,8 @@
   "description": "A build and deployment tool for the devs at Barrel",
   "main": "index.js",
   "bin": {
-    "brrl": "./index.js"
+    "brrl": "./index.js",
+    "brrl-install": "./lib/install.js"
   },
   "author": "maxrolon",
   "license": "MIT",
