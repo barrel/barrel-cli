@@ -5,7 +5,7 @@
   "main": "index.js",
   "bin": {
     "brrl": "./index.js",
-    "brrl-install": "./lib/install.js"
+    "brrl-install": "./install.js"
   },
   "author": "maxrolon",
   "license": "MIT",
