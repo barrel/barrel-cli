@@ -1,6 +1,6 @@
 {
   "name": "@barrelny/cli",
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "A build and deployment tool for the devs at Barrel",
   "main": "index.js",
   "bin": {

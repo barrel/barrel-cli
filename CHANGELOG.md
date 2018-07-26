@@ -1,5 +1,8 @@
 # Barrel cli changelog
 
+### v1.0.30 (7/26/18)
+- Fix typo in reference to localhost
+
 ### v1.0.29 (7/20/18)
 - Updates README
 
