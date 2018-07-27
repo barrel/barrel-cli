@@ -1,8 +1,6 @@
 #! /usr/bin/env node
 'use strict'
 
-const path = require('path')
-const fs = require('fs')
 const program = require('commander')
 const colors = require('colors')
 
@@ -27,7 +25,9 @@ if (program.debug) {
 
 process.env.ENV = program.env || 'development'
 
-if (process.env.ENV !== 'development') {
+if (process.env.ENV === 'development') {
+  process.env.NODE_ENV = 'development'
+} else {
   process.env.NODE_ENV = 'production'
 }
 
