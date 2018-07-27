@@ -33,7 +33,8 @@ class Installer {
   }
 
   install (dependencies) {
-    return this.exec(`cd ${process.cwd()} && npm i -D ${dependencies}`)
+    // Last npm i is to recreate full .bin folder
+    return this.exec(`cd ${process.cwd()} && npm i -D ${dependencies} && npm i`)
   }
 }
 
