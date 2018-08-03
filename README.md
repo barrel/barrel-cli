@@ -1,3 +1,12 @@
+> ### If migrating from a 0.0.* version of this package to a ^1.0.0 version of this package
+> After you install the new version run through the following steps:
+> 1. Remove the node_modules folder
+> 2. Remove the package-lock.json
+> 3. Add the following npm script: `dependencies: "brrl-install"`
+> 4. run `npm run dependencies`
+> 
+> This will add dependencies that were originally managed in this package to your project's `package.json`.
+
 # @barrelny/cli
 
 This CLI provides development, build and deployment tasks for Shopify projects. The tool is designed to work with Wordpress projects too but currently it has not been tested properly with Wordpress. The tool enforces a Webpack-based development environment for bundling of styles and scripts.
