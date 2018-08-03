@@ -2,6 +2,15 @@
 
 This CLI provides development, build and deployment tasks for Shopify projects. The tool is designed to work with Wordpress projects too but currently it has not been tested properly with Wordpress. The tool enforces a Webpack-based development environment for bundling of styles and scripts.
 
+> ### If migrating from a 0.0.* version of this package to a ^1.0.0 version of this package
+> After you install the new version run through the following steps:
+> 1. Remove the node_modules folder
+> 2. Remove the package-lock.json
+> 3. Add the following npm script: `dependencies: "brrl-install"`
+> 4. run `npm run dependencies`
+> 
+> This will add dependencies that were originally managed in this package to your project's `package.json`.
+
 ### Table of Contents
 1. Install
 1. Dependencies
@@ -11,7 +20,7 @@ This CLI provides development, build and deployment tasks for Shopify projects. 
 ```bash
 npm i @barrelny/cli -D
 ```
-> If you're using any plugins or transforms in your ```postcss.config``` or ```.babelrc```, please install these too. The CLI installs the following packages for you:
+> If you're using any plugins or transforms in your ```postcss.config``` or ```.babelrc```, please install these too. The CLI has an installations script accessible through `brrl-install` that will, when executed, install the following packages for you:
 - transform-object-rest-spread (babelrc)
 - transform-object-assign (babelrc)
 - postcss-import (postcss)
@@ -61,6 +70,7 @@ Here is an example of how to write your scripts for a *Shopify* project:
   "scripts": {
     "start": "brrl -w",
     "build": "brrl -b",
+    "dependencies": "brrl-install",
     "dev": "brrl -d -e development",
     "staging": "brrl -d -e staging",
     "production": "brrl -d -e production"
@@ -76,7 +86,8 @@ Here is an example of how to write your scripts for a *Wordpress* project:
 {
   "scripts": {
     "start": "brrl -w",
-    "build": "brrl -b"
+    "build": "brrl -b",
+    "dependencies": "brrl-install"
   },
   ...
 }
@@ -114,12 +125,16 @@ In the foot:
 ```
 
 ## API
-There are 3 commands currently provided by this tool:
+There are 4 commands currently provided by this tool:
+- ```brrl-install```
 - ```brrl -w or -watch```
 - ```brrl -b or -build```
 - ```brrl -d or -deploy```
 
-For each of these commands, a ```-e <development|staging|production>``` variable can be flagged
+##### ```brrl-install```
+This is an installation script that will add common packages that we develop with at Barrel into the project's package.json. You should run this command only once, when you are scaffolding out a project.
+
+**For each of the commands below, a ```-e <development|staging|production>``` variable can be flagged**
 
 ##### ```brrl -w or -watch```
 This command creates a proxy environment for a Shopify or Wordpress site that uses [Browsersync](https://www.browsersync.io/) to provide hot module reloading. When CSS and JS assets are updated in your text editor, your browser will automatically reflect the changes. If you update a liquid file (or in Wordpress, a PHP file), the browser will automatically reload after the file as been copied to the ```/dist``` directory and uploaded to the Shopify theme outlined in the ```config.yml``` file. Note that JS and CSS files are compiled into memory and not written to the file system.
