@@ -20,7 +20,7 @@ This CLI provides development, build and deployment tasks for Shopify projects. 
 ```bash
 npm i @barrelny/cli -D
 ```
-> If you're using any plugins or transforms in your ```postcss.config``` or ```.babelrc```, please install these too. The CLI installs the following packages for you:
+> If you're using any plugins or transforms in your ```postcss.config``` or ```.babelrc```, please install these too. The CLI has an installations script accessible through `brrl-install` that will, when executed, install the following packages for you:
 - transform-object-rest-spread (babelrc)
 - transform-object-assign (babelrc)
 - postcss-import (postcss)
@@ -132,7 +132,7 @@ There are 4 commands currently provided by this tool:
 - ```brrl -d or -deploy```
 
 ##### ```brrl-install```
-This is an installation script that will add common packages that we develop with at Barrel into the projects package.json. You should run this command only once, when you are scaffolding out a project.
+This is an installation script that will add common packages that we develop with at Barrel into the project's package.json. You should run this command only once, when you are scaffolding out a project.
 
 **For each of the commands below, a ```-e <development|staging|production>``` variable can be flagged**
 
