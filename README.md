@@ -70,6 +70,7 @@ Here is an example of how to write your scripts for a *Shopify* project:
   "scripts": {
     "start": "brrl -w",
     "build": "brrl -b",
+    "dependencies": "brrl-install",
     "dev": "brrl -d -e development",
     "staging": "brrl -d -e staging",
     "production": "brrl -d -e production"
@@ -85,7 +86,8 @@ Here is an example of how to write your scripts for a *Wordpress* project:
 {
   "scripts": {
     "start": "brrl -w",
-    "build": "brrl -b"
+    "build": "brrl -b",
+    "dependencies": "brrl-install"
   },
   ...
 }
@@ -123,12 +125,16 @@ In the foot:
 ```
 
 ## API
-There are 3 commands currently provided by this tool:
+There are 4 commands currently provided by this tool:
+- ```brrl-install```
 - ```brrl -w or -watch```
 - ```brrl -b or -build```
 - ```brrl -d or -deploy```
 
-For each of these commands, a ```-e <development|staging|production>``` variable can be flagged
+##### ```brrl-install```
+This is an installation script that will add common packages that we develop with at Barrel into the projects package.json. You should run this command only once, when you are scaffolding out a project.
+
+**For each of the commands below, a ```-e <development|staging|production>``` variable can be flagged**
 
 ##### ```brrl -w or -watch```
 This command creates a proxy environment for a Shopify or Wordpress site that uses [Browsersync](https://www.browsersync.io/) to provide hot module reloading. When CSS and JS assets are updated in your text editor, your browser will automatically reflect the changes. If you update a liquid file (or in Wordpress, a PHP file), the browser will automatically reload after the file as been copied to the ```/dist``` directory and uploaded to the Shopify theme outlined in the ```config.yml``` file. Note that JS and CSS files are compiled into memory and not written to the file system.
