@@ -1,5 +1,11 @@
 # Barrel cli changelog
 
+### v1.0.3 (8/3/18)
+- Changelog updates
+
+### v1.0.2 (8/3/18)
+- Fixes bug with target setting
+
 ### v1.0.1 (7/27/18)
 - Updates webpack to v4
 - Adds in "HMR" and "Local" options
