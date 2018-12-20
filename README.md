@@ -4,10 +4,9 @@ This CLI provides development, build and deployment tasks for Shopify projects. 
 
 > ### If migrating from a 0.0.* version of this package to a ^1.0.0 version of this package
 > After you install the new version run through the following steps:
-> 1. Remove the node_modules folder
-> 2. Remove the package-lock.json
-> 3. Add the following npm script: `dependencies: "brrl-install"`
-> 4. run `npm run dependencies`
+> 1. Remove the package-lock.json
+> 2. Add the following line to package.json under scripts: `"dependencies": "brrl-install"`
+> 3. run `npm run dependencies`
 > 
 > This will add dependencies that were originally managed in this package to your project's `package.json`.
 
