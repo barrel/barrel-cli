@@ -1,5 +1,9 @@
 # Barrel cli changelog
 
+### v1.0.4 (12/20/18)
+- Adds in support of file system 'add' events
+- Fixes deployment breaking on .vue files
+
 ### v1.0.3 (8/3/18)
 - Changelog updates
 
