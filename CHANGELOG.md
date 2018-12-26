@@ -1,5 +1,8 @@
 # Barrel cli changelog
 
+### v1.0.5 (12/26/18)
+- Ignores optional dashboard files
+
 ### v1.0.4 (12/20/18)
 - Adds in support of file system 'add' events
 - Fixes deployment breaking on .vue files
