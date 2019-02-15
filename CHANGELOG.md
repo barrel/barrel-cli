@@ -1,6 +1,9 @@
 # Barrel cli changelog
 
-### v1.0.6 (2/5/18)
+### v1.0.7 (2/15/19)
+- Allows files to be ignored from upload
+
+### v1.0.6 (2/5/19)
 - Adds version number as global variable
 
 ### v1.0.5 (12/26/18)
