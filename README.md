@@ -150,10 +150,12 @@ The person deploying can select at what point in the git repository they want to
 
 ##### Common usecases encountered when using  ```brrl -deploy```
 
-**Deploying file changes made on a feature branch.** 
+**Deploying file changes made on a feature branch.**
+
 In this case, the deploying user should write "develop" in response to the console prompt. By putting in "develop", all files that have changed since the feature branch diverged from the `develop` branch will be deployed. This works when the targetted Shopify theme is up to date with the files on `develop`. If not, "all" can be written after the prompt instead to deploy all theme files.
 
 **Updating a theme to the latest version.**
+
 In this case, the deploying user should write the last tag name, e.g. "v1.0.2" in response to the console prompt. This is effective if the deploying user is deploying version `v1.0.3` to a theme that is already up to date with `v1.0.2`. By putting in "v1.0.3", the deployment task finds all files that have changed between versions and deploys only those files.
 
 MIT
