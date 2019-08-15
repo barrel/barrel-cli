@@ -13,7 +13,8 @@ This CLI provides development, build and deployment tasks for Shopify projects. 
 ### Table of Contents
 1. Install
 1. Dependencies
-2. API
+1. API
+1. Configuration Specifics
 
 ### Install
 ```bash
@@ -158,4 +159,26 @@ In this case, the deploying user should write "develop" in response to the conso
 
 In this case, the deploying user should write the last tag name, e.g. "v1.0.2" in response to the console prompt. This is effective if the deploying user is deploying version `v1.0.3` to a theme that is already up to date with `v1.0.2`. By putting in "v1.0.3", the deployment task finds all files that have changed between versions and deploys only those files.
 
+## Configuration Specifics
+```yaml
+production:
+  theme_id: # This is the Shopify Theme ID
+  api_key: # This is the Shopify API Key for your Private App
+  password: # This is the Shopify API password for your Private App
+  store: # This is the *.myshopify.com URL (e.g barrel.myshopify.com)
+staging:
+  theme_id: # This is the Shopify Theme ID
+  api_key: # This is the Shopify API Key for your Private App
+  password: # This is the Shopify API password for your Private App
+  store: # This is the *.myshopify.com URL (e.g barrel.myshopify.com)
+development:
+  theme_id: # This is the Shopify Theme ID
+  api_key: # This is the Shopify API Key for your Private App
+  password: # This is the Shopify API password for your Private App
+  store: # This is the *.myshopify.com URL (e.g barrel.myshopify.com)
+  domain: # If Shopify has redirects to the primary domain enabled, put the domain here (e.g. barrelny.com)
+  local: # If you would like to use a local URL other than localhost, put it here (e.g. 10.0.1.8)
+  hmr: # If you would like to turn off hot module reloading, do so here (e.g. true or false)**
+
+** I have found this useful when debugging on mobile devices. Sometimes HMR causes the device to reload unnecessarily.
 MIT
