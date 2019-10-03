@@ -1,5 +1,8 @@
 # Barrel cli changelog
 
+### v1.0.8 (10/3/19)
+- Adds snippetOptions to browsersync config in watcher to fix new shopify issue
+
 ### v1.0.7 (2/15/19)
 - Allows files to be ignored from upload
 
