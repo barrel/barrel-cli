@@ -42,9 +42,12 @@ This CLI tool requires the following components:
 2. A `webpack.config.js` in your root directory. This file should at least export an object with the following properties:
 ```javascript
 module.exports = {
-  devtool: '',
-  entry: { main: ['main.css','main.js'] },
-  output: { ... },
+  devtool: 'eval-source-map',
+  main: ['./src/assets/css/main.css', './src/assets/js/main.js']
+  output: {
+    filename: '[name].js',
+    path: path.join(__dirname, 'dist/assets')
+  },
   module: { rules: [ ... ] }
 }
 ```
@@ -120,8 +123,96 @@ In the head:
 
 In the foot:
 {% unless settings.is_dev_mode %}
+  {{ 'vendors@main.js' | asset_url | script_tag }}
   {{ 'main.js' | asset_url | script_tag }}
 {% endunless %}
+```
+
+8. Template and Layout specific JS entrypoints
+
+This CLI registers an entrypoint for each template and layout file in
+the `src/layout` and `src/templates` directories, looks for a JS file
+with the same name in the `src/assets/js/layout` and
+`src/assets/js/templates` files, and generates a snippet called
+`script-tags.liquid` that conditionally includes those entrypoints based
+on the requested template and layout.
+
+It also generates a `style-tags.liquid` snippet which includes style
+assets in your theme.
+
+This is a huge performance win for themes. You can serve only the JS
+needed for the current page, rather than forcing users to download JS for all pages.
+
+Example of your `src` directory:
+
+```
+src
+|- assets
+   |-- js
+       |-- layout
+       |   |-- theme.js
+       |-- templates
+           |-- index.js
+|- layout
+   |-- theme.liquid
+|- templates
+   |-- index.liquid
+```
+
+Transformed into:
+
+```
+dist
+|- assets
+   |-- theme.js
+   |-- index.js
+|- snippets
+   |-- style-tags.liquid
+   |-- script-tags.liquid
+```
+
+```liquid
+<!-- /snippets/script-tags.liquid -->
+
+{%- if layout == 'theme' -%}
+  <script type="text/javascript" src="{{ 'layout.theme.js' | asset_url }}" defer="defer"></script>
+{%- else -%}
+  <link rel="prefetch" href="{{ 'layout.theme.js' | asset_url }}" as="script">
+{%- endif -%} {%- if template == 'index' -%}
+  <script type="text/javascript" src="{{ 'template.index.js' | asset_url }}" defer="defer"></script>
+{%- else -%}
+  <link rel="prefetch" href="{{ 'template.index.js' | asset_url }}" as="script">
+{%- endif -%}
+```
+
+During development the files will be served from your local and on
+production from Shopify's CDN.
+
+The earlier we can request JS the faster it can be downloaded and
+executed. Move JS from the end of the `<body>` to the end of `<head>`.
+
+```diff
+<head>
+- {%- if settings.is_dev_mode -%}
+-   {{- '/dev/main.js' | script_tag -}}
+- {%- else -%}
+-   {{- 'main.min.css' | asset_url | stylesheet_tag -}}
+- {%- endif -%}
+
++ {%- include 'style-tags', layout: 'theme' -%}
++ {%- include 'script-tags', layout: 'theme' -%}
+
+  {{ content_for_header }}
+</head>
+
+<body>
+- {%- if settings.is_dev_mode -%}
+-   {{- '/dev/main.js' | script_tag -}}
+- {%- else -%}
+-   {{- 'main.min.css' | asset_url | stylesheet_tag -}}
+- {%- endif -%}
+</body>
+
 ```
 
 ## API
