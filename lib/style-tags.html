@@ -42,11 +42,15 @@
         <% } %>
       <% }); %>
 
-      {%- if <%= conditions.join(' or ') %> -%}
+      <% if (conditions.length) { %>
+        {%- if <%= conditions.join(' or ') %> -%}
+      <% } %>
         <link type="text/css" href="<%= src %>" rel="stylesheet">
-      {%- else -%}
-        <link rel="prefetch" href="<%= src %>" as="style">
-      {%- endif -%}
+      <% if (conditions.length) { %>
+        {%- else -%}
+          <link rel="prefetch" href="<%= src %>" as="style">
+        {%- endif -%}
+      <% } %>
     <% } else { %>
       <link type="text/css" href="<%= src %>" rel="stylesheet">
     <% } %>
