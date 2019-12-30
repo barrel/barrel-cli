@@ -215,6 +215,19 @@ executed. Move JS from the end of the `<body>` to the end of `<head>`.
 
 ```
 
+You may also want to remove the old entrypoints from your webpack config
+file.
+
+```diff
+module.exports = {
+  devtool: 'eval-source-map',
+  entry: {
+-   main: ['./src/assets/css/main.css', './src/assets/js/main.js']
+  },
+  ...
+```
+
+
 ## API
 There are 4 commands currently provided by this tool:
 - ```brrl-install```
