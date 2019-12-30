@@ -227,6 +227,19 @@ module.exports = {
   ...
 ```
 
+In order to prevent duplication of code and improve page load
+performance, common dependencies between
+template and layout bundles are extracted into separate chunks.
+
+```
+successfully compiled files...
+[upload] /dist/assets/layout.theme.css
+[upload] /dist/assets/layout.theme.js
+[upload] /dist/assets/vendors@layout.theme.css
+[upload] /dist/assets/vendors@layout.theme.js
+[upload] /dist/snippets/script-tags.liquid
+[upload] /dist/snippets/style-tags.liquid
+```
 
 ## API
 There are 4 commands currently provided by this tool:
