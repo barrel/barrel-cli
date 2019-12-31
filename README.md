@@ -124,6 +124,18 @@ In the foot:
 {% endunless %}
 ```
 
+8. SVG icons
+
+Place your SVG icons in `src/assets/icons`, preface the filename with
+the name `icon-`. E.g. `icon-cart.svg` and the icons will become
+available for use as snippets in your theme.
+
+Usage in liquid:
+
+```
+{%- include 'icon-cart' -%}
+```
+
 ## API
 There are 4 commands currently provided by this tool:
 - ```brrl-install```
