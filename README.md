@@ -130,6 +130,7 @@ There are 4 commands currently provided by this tool:
 - ```brrl -w or -watch```
 - ```brrl -b or -build```
 - ```brrl -d or -deploy```
+- ```brrl -c or -critical```
 
 ##### ```brrl-install```
 This is an installation script that will add common packages that we develop with at Barrel into the project's package.json. You should run this command only once, when you are scaffolding out a project.
@@ -148,6 +149,36 @@ This command simply compiles your JS and CSS assets and, if it is a Shopify proj
 This command will build your project and deploy *Only the necessary files* to your Shopify theme. The deployment is based on a ```git diff``` workflow. 
 
 The person deploying can select at what point in the git repository they want to check for files that have changed. They can specify a tag, branch or commit hash, or “all” to deploy all files. This is done in the terminal window, in response to a prompt that is surfaced by the tool. If no answer is provided to the prompt, then the deployment script will check for files from the latest version tag (e.g. v1.0.1). If no version tag is found in the repo then it’ll check for files changed since the current branch was branched off of develop (or if the current branch is develop, branched off of master).
+
+##### ```brrl -c or -critical```
+Generate and inline critical styles (above the fold) and load the
+existing stylesheet asynchronously. The link to the main stylesheet will
+be also wrapped in `<noscript>` so the users with javascript disabled
+will see the site rendered normally.
+
+__Configuration__
+
+_critical.yml_
+
+```yml
+# Your base directory
+base: dist/
+# Your CSS file
+css: assets/layout.theme.css
+# Viewport width
+width: 1300
+# Viewport height
+height: 900
+# Inline critical styles to file
+target: snippets/style-tags.liquid
+# Minify resulting CSS file with critical CSS extracted
+minify: true
+# Urls to extract critical CSS from
+urls:
+  - https://your-store.myshopify.com
+  - https://your-store.myshopify.com/products/grunya-sun
+  - https://your-store.myshopify.com/collections/all
+```
 
 ## Common usecases encountered when using  ```brrl -deploy```
 
