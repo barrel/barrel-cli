@@ -12,6 +12,7 @@ program
   .option('-e --env [env]', 'specify an environment')
   .option('-b, --build [env]', 'deploy a theme')
   .option('-d, --deploy [env]', 'deploy a theme')
+  .option('-c, --critical [env]', 'generate and inline critical css')
   .option('--debug', 'enable available debugging')
   .option('--all', 'force deployment of all files')
   .parse(process.argv)
@@ -36,6 +37,7 @@ const configure  = require('./lib/configure')
 const watcher    = require('./lib/watcher')
 const builder    = require('./lib/builder')
 const deployer   = require('./lib/deployer')
+const critical   = require('./lib/critical')
 
 /**
  * Clear terminal bc it's prettier
@@ -55,6 +57,11 @@ configure.setup({
     case program.deploy:
       if (configure.get('shopify')) {
         deployer()
+      }
+      break
+    case program.critical:
+      if (configure.get('shopify')) {
+        critical()
       }
       break
   }
