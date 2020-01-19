@@ -1,0 +1,17 @@
+# Your base directory
+base: dist/
+# Your CSS file
+css: assets/layout.theme.css
+# Viewport width
+width: 1300
+# Viewport height
+height: 900
+# Inline critical styles to file
+target: snippets/style-tags.liquid
+# Minify resulting CSS file with critical CSS extracted
+minify: true
+# Urls to extract critical CSS from
+urls:
+  - https://your-store.myshopify.com
+  - https://your-store.myshopify.com/products/grunya-sun
+  - https://your-store.myshopify.com/collections/all
