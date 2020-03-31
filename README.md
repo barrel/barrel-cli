@@ -13,7 +13,8 @@ This CLI provides development, build and deployment tasks for Shopify projects. 
 ### Table of Contents
 1. Install
 1. Dependencies
-2. API
+1. API
+1. Configuration Specifics
 
 ### Install
 ```bash
@@ -148,4 +149,36 @@ This command will build your project and deploy *Only the necessary files* to yo
 
 The person deploying can select at what point in the git repository they want to check for files that have changed. They can specify a tag, branch or commit hash, or “all” to deploy all files. This is done in the terminal window, in response to a prompt that is surfaced by the tool. If no answer is provided to the prompt, then the deployment script will check for files from the latest version tag (e.g. v1.0.1). If no version tag is found in the repo then it’ll check for files changed since the current branch was branched off of develop (or if the current branch is develop, branched off of master).
 
+## Common usecases encountered when using  ```brrl -deploy```
+
+##### Deploying file changes made on a feature branch.
+
+In this case, the deploying user should write "develop" in response to the console prompt. By putting in "develop", all files that have changed since the feature branch diverged from the `develop` branch will be deployed. This works when the targetted Shopify theme is up to date with the files on `develop`. If not, "all" can be written after the prompt instead to deploy all theme files.
+
+##### Updating a theme to the latest version.
+
+In this case, the deploying user should write the last tag name, e.g. "v1.0.2" in response to the console prompt. This is effective if the deploying user is deploying version `v1.0.3` to a theme that is already up to date with `v1.0.2`. By putting in "v1.0.3", the deployment task finds all files that have changed between versions and deploys only those files.
+
+## Configuration Specifics
+```yaml
+production:
+  theme_id: # This is the Shopify Theme ID
+  api_key: # This is the Shopify API Key for your Private App
+  password: # This is the Shopify API password for your Private App
+  store: # This is the *.myshopify.com URL (e.g barrel.myshopify.com)
+staging:
+  theme_id: # This is the Shopify Theme ID
+  api_key: # This is the Shopify API Key for your Private App
+  password: # This is the Shopify API password for your Private App
+  store: # This is the *.myshopify.com URL (e.g barrel.myshopify.com)
+development:
+  theme_id: # This is the Shopify Theme ID
+  api_key: # This is the Shopify API Key for your Private App
+  password: # This is the Shopify API password for your Private App
+  store: # This is the *.myshopify.com URL (e.g barrel.myshopify.com)
+  domain: # If Shopify has redirects to the primary domain enabled, put the domain here (e.g. barrelny.com)
+  local: # If you would like to use a local URL other than localhost, put it here (e.g. 10.0.1.8)
+  hmr: # If you would like to turn off hot module reloading, do so here (e.g. true or false)**
+
+** I have found this useful when debugging on mobile devices. Sometimes HMR causes the device to reload unnecessarily.
 MIT
