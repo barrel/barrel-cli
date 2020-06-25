@@ -166,16 +166,19 @@ production:
   api_key: # This is the Shopify API Key for your Private App
   password: # This is the Shopify API password for your Private App
   store: # This is the *.myshopify.com URL (e.g barrel.myshopify.com)
+  ignore_files: # List of ignore patterns
 staging:
   theme_id: # This is the Shopify Theme ID
   api_key: # This is the Shopify API Key for your Private App
   password: # This is the Shopify API password for your Private App
   store: # This is the *.myshopify.com URL (e.g barrel.myshopify.com)
+  ignore_files: # List of ignore patterns
 development:
   theme_id: # This is the Shopify Theme ID
   api_key: # This is the Shopify API Key for your Private App
   password: # This is the Shopify API password for your Private App
   store: # This is the *.myshopify.com URL (e.g barrel.myshopify.com)
+  ignore_files: # List of ignore patterns
   domain: # If Shopify has redirects to the primary domain enabled, put the domain here (e.g. barrelny.com)
   local: # If you would like to use a local URL other than localhost, put it here (e.g. 10.0.1.8)
   hmr: # If you would like to turn off hot module reloading, do so here (e.g. true or false)**
