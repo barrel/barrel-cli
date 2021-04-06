@@ -7,16 +7,17 @@ This CLI provides development, build and deployment tasks for Shopify projects. 
 > 1. Remove the package-lock.json
 > 2. Add the following line to package.json under scripts: `"dependencies": "brrl-install"`
 > 3. run `npm run dependencies`
-> 
+>
 > This will add dependencies that were originally managed in this package to your project's `package.json`.
 
-### Table of Contents
+## Table of Contents
 1. Install
-1. Dependencies
-1. API
-1. Configuration Specifics
+2. Dependencies
+3. Optimization
+4. API
+5. Configuration Specifics
 
-### Install
+## Install
 ```bash
 npm i @barrelny/cli -D
 ```
@@ -38,7 +39,7 @@ This CLI tool requires the following components:
   - store
   - password
   - api_key (needed for deployment)
-  
+
 2. A `webpack.config.js` in your root directory. This file should at least export an object with the following properties:
 ```javascript
 module.exports = {
@@ -62,7 +63,7 @@ src
    |-- customers
 ```
 
-4. A ```package.json``` file. 
+4. A ```package.json``` file.
 
 Here is an example of how to write your scripts for a *Shopify* project:
 ```javascript
@@ -124,6 +125,41 @@ In the foot:
 {% endunless %}
 ```
 
+## Optimization
+Code splitting can be enabled by:
+
+1. Add additional entry points to `webpack.config.js`:
+
+```javascript
+{
+  entry: {
+    main: './src/assets/js/main',
+    index: './src/assets/js/templates/index',
+    product: './src/assets/js/templates/product',
+    collection: './src/assets/js/templates/collection'
+  },
+  ...
+}
+
+```
+
+2. Include the optimization property in `webpack.config.js` to extract common dependencies into chunks based on provided entry points:
+
+```javascript
+{
+  optimization: {
+    splitChunks: {
+      chunks: 'initial',
+      automaticNameDelimiter: '@'
+    }
+  },
+  ...
+}
+
+```
+
+The compiled entry point and dependency chunks can then be included on template files as needed.
+
 ## API
 There are 4 commands currently provided by this tool:
 - ```brrl-install```
@@ -143,13 +179,13 @@ This command creates a proxy environment for a Shopify or Wordpress site that us
 This command simply compiles your JS and CSS assets and, if it is a Shopify project, copies your theme assets in a ```/dist``` directory. The task will create separate minified JS and CSS assets.
 
 ##### ```brrl -d or -deploy```
-> This file is only suitable for Shopify projects. This task will not do anything if the project is not a Shopify project. 
+> This file is only suitable for Shopify projects. This task will not do anything if the project is not a Shopify project.
 
-This command will build your project and deploy *Only the necessary files* to your Shopify theme. The deployment is based on a ```git diff``` workflow. 
+This command will build your project and deploy *Only the necessary files* to your Shopify theme. The deployment is based on a ```git diff``` workflow.
 
 The person deploying can select at what point in the git repository they want to check for files that have changed. They can specify a tag, branch or commit hash, or “all” to deploy all files. This is done in the terminal window, in response to a prompt that is surfaced by the tool. If no answer is provided to the prompt, then the deployment script will check for files from the latest version tag (e.g. v1.0.1). If no version tag is found in the repo then it’ll check for files changed since the current branch was branched off of develop (or if the current branch is develop, branched off of master).
 
-## Common usecases encountered when using  ```brrl -deploy```
+### Common usecases encountered when using  ```brrl -deploy```
 
 ##### Deploying file changes made on a feature branch.
 
