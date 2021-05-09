@@ -38,6 +38,7 @@ This CLI tool requires the following components:
   - store
   - password
   - api_key (needed for deployment)
+  - delay (Optional, delay before reloading the page, 1600-2000ms seem to work well)
   
 2. A `webpack.config.js` in your root directory. This file should at least export an object with the following properties:
 ```javascript
