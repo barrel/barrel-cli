@@ -38,6 +38,7 @@ This CLI tool requires the following components:
   - store
   - password
   - api_key (needed for deployment)
+  - delay (Optional, delay before reloading the page, 1600-2000ms seem to work well)
   
 2. A `webpack.config.js` in your root directory. This file should at least export an object with the following properties:
 ```javascript
@@ -103,7 +104,10 @@ module.exports = {
 }
 ```
 
-6. The following line in the entry JS file (e.g. main.js file):
+6. The following line in the entry JS file (e.g. main.js file) to change
+   the public URL of the output directory when referenced in a browser.
+During development it uses your `local` URL and on production it uses
+Shopify's CDN.
 
 ```javascript
 __webpack_public_path__ = BRRL_PATH(BRRL_PUBLIC_PATH, BRRL_PROXY) // eslint-disable-line camelcase
@@ -113,7 +117,7 @@ __webpack_public_path__ = BRRL_PATH(BRRL_PUBLIC_PATH, BRRL_PROXY) // eslint-disa
 ```liquid
 In the head:
 {% if settings.is_dev_mode %}
-  {{ '/dev/main.js' | script_tag }}
+  {{ 'https://localhost:3000/main.js' | script_tag }}
 {% else %}
   {{ 'main.css' | asset_url | stylesheet_tag }}
 {% endif %}
