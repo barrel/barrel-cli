@@ -1,4 +1,7 @@
-# @barrelny/cli
+# @barrelny/cli - THIS PROJECT IS NO LONGER BEING MAINTAINED
+> *Why did we stop maintaining this project?*
+> The project featured some nifty workflows which relied on certain libraries that became difficult to upgrade. In addition, Node updates rendered certain features inoperable and similarly required additional maintenance. Finally with the advent of better tools like Shopify CLI and Vite.
+> Please [read](https://barrel.notion.site/Upgrading-a-legacy-Shopify-theme-eceb4ab17e644e7dbf3aaddaa20a1baa?pvs=25) our suggested upgrade path towards modernizing.
 
 This CLI provides development, build and deployment tasks for Shopify projects. The tool is designed to work with Wordpress projects too but currently it has not been tested properly with Wordpress. The tool enforces a Webpack-based development environment for bundling of styles and scripts.
 
